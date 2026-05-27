@@ -1,0 +1,75 @@
+server:
+  port: 8099
+
+redis:
+  addr: "${REDIS_ADDR:127.0.0.1:6379}"
+  password: "${REDIS_PASSWORD:123456}"
+  db: 0
+
+auth:
+  token_header: "jsessionid"
+  token_prefix: "login_tokens:"
+  token_ttl: "3h"
+  perm_rules_key: "system:perm_roles_rule:url:"
+  admin_user_types:
+    - admin
+    - manager
+
+whitelist:
+  - /amazon/api/v1/report/product/amzProductPageviews/auth/uploadSessionFile
+  - /amazon/api/v1/amzauthority/authSeller
+  - /amazonadv/api/v1/advert/bindAdvAuthData
+  - /ssoclient/**
+  - /admin/api/v1/auth/**
+  - /auth/**
+  - /admin/api/v1/users/register
+  - /admin/api/v1/users/updatePassword
+  - /admin/api/v1/sms/**
+  - /erp/api/v1/purchase1688/message
+  - /admin/api/v1/users/getSmsCode
+  - /admin/api/v1/users/getEmailCode
+  - /admin/api/v1/users/updatePasswordForget
+  - /admin/webhook/event/**
+  - /admin/webhoot/card/**
+  - /quote/api/v1/quote/supplier/listSupplierOrder
+  - /quote/api/v1/quote/supplier/submitPrice/**
+  - /quote/api/v1/quote/supplier/updateBase
+
+routes:
+  - prefix: /admin
+    target: "${ADMIN_TARGET:http://127.0.0.1:8100}"
+  - prefix: /erp
+    target: "${ERP_TARGET:http://127.0.0.1:8101}"
+  - prefix: /amazon
+    target: "${AMAZON_TARGET:http://127.0.0.1:8102}"
+  - prefix: /amazonadv
+    target: "${AMAZONADV_TARGET:http://127.0.0.1:8103}"
+  - prefix: /quote
+    target: "${QUOTE_TARGET:http://127.0.0.1:8500}"
+  - prefix: /mdata
+    target: "${MDATA_TARGET:http://127.0.0.1:8104}"
+  - prefix: /finance
+    target: "${FINANCE_TARGET:http://127.0.0.1:8106}"
+  - prefix: /code
+    target: "${CODE_TARGET:http://127.0.0.1:8800}"
+
+cors:
+  allow_origins:
+    - "*"
+  allow_methods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - OPTIONS
+    - PATCH
+  allow_headers:
+    - "*"
+  expose_headers:
+    - Content-Type
+    - Authorization
+  max_age: 86400
+
+log:
+  level: info
+  file: ""
