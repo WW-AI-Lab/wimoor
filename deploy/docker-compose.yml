@@ -15,6 +15,8 @@ services:
     command: >
       --character-set-server=utf8mb4
       --collation-server=utf8mb4_unicode_ci
+      --character-set-client-handshake=FALSE
+      --init-connect='SET NAMES utf8mb4'
       --max_connections=500
       --lower_case_table_names=1
       --innodb-strict-mode=0
