@@ -27,8 +27,12 @@ target
 .apt_generated
 .apt_generated_tests
 *.classpath
-wimoorui
 
+# Frontend (wimoorui) build artifacts and dependencies
+wimoorui/node_modules/
+wimoorui/dist/
+wimoorui/dist-ssr/
+wimoorui/*.local
 
 .DS_Store
 node_modules/

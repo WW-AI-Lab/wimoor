@@ -13,7 +13,8 @@
 ## 仓库结构
 
 - 根目录是 Maven 多模块 Spring Cloud 后端，父 POM 是 `pom.xml`。
-- `wimoorui/` 是嵌套的独立 Git 仓库，remote 为 `https://github.com/wimoor-erp/wimoorui.git`。根仓库会把它显示成未跟踪目录，修改前端时仍要按 `wimoorui` 自己的 Git 状态判断。
+- `wimoorui/` 是前端目录，**已直接纳入本仓库管理**（非独立 Git 子仓库/submodule），与 `wimoor-admin` 等后端模块处于同一 Git 历史中。修改前端直接在此目录操作并提交到主仓库即可。
+  - 被忽略的运行时/构建产物：`wimoorui/node_modules/`、`wimoorui/dist/`、`wimoorui/dist-ssr/`、`wimoorui/*.local`。
 - 主要模块边界：
   - `wimoor-gateway`：网关与鉴权过滤器。
   - `wimoor-admin`：用户、角色、菜单、权限、Quartz 任务中心。
@@ -71,6 +72,7 @@
 
 ## 前端 `wimoorui`
 
+- `wimoorui/` 已作为普通目录纳入主仓库，**不再是独立 Git 项目**。前端改动直接 `git add wimoorui/...` 后与后端同步提交。
 - 技术栈：Vite、Vue 3、Vue Router 4、Vuex 4、Element Plus、ECharts、Axios、Sass、SVG icon plugin。
 - 前端命令都在 `wimoorui/` 下执行：
   - `npm install`
