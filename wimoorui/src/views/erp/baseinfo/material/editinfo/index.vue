@@ -34,7 +34,12 @@
 							 <el-link :underline="false" href="#logistics">物流信息</el-link>
 						</template>
 					</el-tab-pane>
-				    <el-tab-pane label="图片视频" name="7">
+				    <el-tab-pane label="标题描述" name="8">
+						<template #label>
+							 <el-link :underline="false" href="#listing">标题描述</el-link>
+						</template>
+					</el-tab-pane>
+				    <el-tab-pane label="图片视频" name="9">
 						<template #label>
 							 <el-link :underline="false" href="#media">图片视频</el-link>
 						</template>
@@ -94,6 +99,14 @@
 							</div>
 
 							<el-divider />
+							<!-- 标题描述 -->
+							<Listing v-if="forms.baseforms.id" ref="listingRef" :material-id="forms.baseforms.id" />
+							<el-alert v-else type="info" :closable="false" title="请先保存基本信息后再编辑Listing" />
+							<div class="module-save-bar" v-if="isEditMode && forms.baseforms.id">
+								<el-button type="primary" size="small" :loading="saving.listing" @click.stop="submitListing">保存Listing信息</el-button>
+							</div>
+
+							<el-divider />
 							<!--图片视频 -->
 							<div id="media">
 							  <h3 class="mar-top-16">图片视频</h3>
@@ -130,6 +143,7 @@ import Specs from"./components/specs.vue"
 import Assemble from"./components/assemble_info.vue"
 import Parents from "./components/parent_info.vue"
 import MediaEditor from "./components/MediaEditor.vue"
+import Listing from "./components/listing.vue"
 import tabScroll from"@/utils/tab_scroll"
 import {useRouter } from 'vue-router'
 import {checkVisiable} from '@/utils/jquery/table/float-header';
@@ -146,7 +160,8 @@ import materialApi from '@/api/erp/material/materialApi.js';
 	  // 编辑模式：已有产品ID且非复制
 	  const isEditMode = computed(() => !!mid && iscopy !== 'ok');
 	  // 各模块保存 loading 状态
-	  const saving = reactive({ base:false, assembly:false, supplier:false, specs:false, consumable:false, customs:false });
+	  const saving = reactive({ base:false, assembly:false, supplier:false, specs:false, consumable:false, customs:false, listing:false });
+	  const listingRef = ref(null);
 	  const globalFormRef=ref();
 	  onMounted(()=>{
 	  	loadData();
@@ -574,6 +589,13 @@ import materialApi from '@/api/erp/material/materialApi.js';
 			materialApi.saveCustoms(customs || []).then(()=>{
 				ElMessage.success('物流信息保存成功！');
 			}).finally(()=>{ saving.customs = false; });
+		}
+
+		function submitListing(){
+			if(listingRef.value){
+				saving.listing = true;
+				listingRef.value.handleSave().finally(()=>{ saving.listing = false; });
+			}
 		}
 
 		
