@@ -49,9 +49,17 @@ public class MaterialMediaController {
     public Result<ErpMedia> upload(@RequestParam("file") MultipartFile file,
                                    @RequestParam(value = "mediaType", required = false) Integer mediaType,
                                    @RequestParam(value = "usageType", required = false) Integer usageType,
-                                   @RequestParam(value = "source", required = false) Integer source) {
+                                   @RequestParam(value = "source", required = false) Integer source,
+                                   @RequestParam(value = "materialid", required = false) String materialId,
+                                   @RequestParam(value = "refType", required = false) Integer refType) {
         UserInfo user = UserInfoContext.get();
-        return Result.success(mediaService.upload(file, mediaType, usageType, source, user));
+        ErpMedia media = mediaService.upload(file, mediaType, usageType, source, user);
+        // 上传后自动关联到商品（前端传了 materialid 时）
+        if (materialId != null && !materialId.isEmpty() && media != null) {
+            int rt = (refType != null) ? refType : 0;
+            refService.assign(media.getId(), materialId, rt, null, null, null, null, user);
+        }
+        return Result.success(media);
     }
 
     @ApiOperation("批量上传 ZIP 内的图片")

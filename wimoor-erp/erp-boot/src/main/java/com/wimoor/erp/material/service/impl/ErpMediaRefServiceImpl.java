@@ -334,13 +334,12 @@ public class ErpMediaRefServiceImpl extends ServiceImpl<ErpMediaRefMapper, ErpMe
         return top == null || top.getSortOrder() == null ? 0 : top.getSortOrder() + 10;
     }
 
-    /** 同步主图字段：将 media 的 url/location 写入 t_erp_material.image */
+    /** 同步主图字段：将 media 的 ID 写入 t_erp_material.image */
     private void syncMaterialImage(String materialId, ErpMedia media) {
         if (media == null) return;
         Material material = materialService.getById(materialId);
         if (material == null) return;
-        String image = media.getLocation() != null ? media.getLocation() : media.getUrl();
-        material.setImage(image);
+        material.setImage(media.getId());
         materialService.updateById(material);
     }
 
