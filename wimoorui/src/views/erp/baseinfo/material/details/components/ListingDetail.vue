@@ -88,14 +88,39 @@ watch(() => props.materialId, (val) => {
 .listing-desc-label {
   font-weight: bold;
   margin: 12px 0 6px;
-  color: #606266;
+  color: var(--el-text-color-regular);
 }
 .listing-desc-content {
-  border: 1px solid #ebeef5;
+  border: 1px solid var(--el-border-color-light);
   border-radius: 4px;
   padding: 16px;
   min-height: 100px;
-  background: #fafafa;
+  color: var(--el-text-color-primary);
+  background: var(--el-fill-color-light);
   line-height: 1.6;
+}
+
+.listing-desc-content :deep(*) {
+  color: inherit;
+}
+
+.listing-desc-content :deep(a) {
+  color: var(--el-color-primary);
+}
+
+.listing-desc-content :deep(table) {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.listing-desc-content :deep(td),
+.listing-desc-content :deep(th) {
+  border: 1px solid var(--el-border-color);
+  padding: 8px;
+}
+
+.listing-desc-content :deep(img) {
+  max-width: 100%;
+  height: auto;
 }
 </style>

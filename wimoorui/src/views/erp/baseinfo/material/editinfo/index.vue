@@ -101,7 +101,7 @@
 							<el-divider />
 							<!-- 标题描述 -->
 							<Listing v-if="forms.baseforms.id" ref="listingRef" :material-id="forms.baseforms.id" />
-							<el-alert v-else type="info" :closable="false" title="请先保存基本信息后再编辑Listing" />
+							<el-alert v-else type="info" :closable="false" title="请先保存基本信息后再编辑标题描述" />
 							<div class="module-save-bar" v-if="isEditMode && forms.baseforms.id">
 								<el-button type="primary" size="small" :loading="saving.listing" @click.stop="submitListing">保存Listing信息</el-button>
 							</div>
