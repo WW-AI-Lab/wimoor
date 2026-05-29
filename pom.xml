@@ -40,7 +40,7 @@
 		<fastjson2.version>2.0.57</fastjson2.version>
 		<fasterjson.version>2.19.4</fasterjson.version>
 		<!-- CVE Security Fixes -->
-		<tomcat.version>9.0.106</tomcat.version>
+		<tomcat.version>9.0.118</tomcat.version>
 		<logback.version>1.2.13</logback.version>
 		<snakeyaml.version>1.33</snakeyaml.version>
 		<spring-framework.version>5.3.39</spring-framework.version>
@@ -200,6 +200,42 @@
 				<groupId>io.minio</groupId>
 				<artifactId>minio</artifactId>
 				<version>8.6.0</version>
+			</dependency>
+			<!-- CVE Security Fix: protobuf-java DoS (CVE-2024-7254) -->
+			<dependency>
+				<groupId>com.google.protobuf</groupId>
+				<artifactId>protobuf-java</artifactId>
+				<version>3.25.5</version>
+			</dependency>
+			<!-- CVE Security Fix: Dubbo deserialization RCE (CVE-2022-39198, CVE-2023-23638) -->
+			<dependency>
+				<groupId>org.apache.dubbo</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>3.0.14</version>
+			</dependency>
+			<!-- CVE Security Fix: dom4j XXE (CVE-2020-10683) -->
+			<dependency>
+				<groupId>org.dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>2.1.4</version>
+			</dependency>
+			<!-- CVE Security Fix: shiro-core auth bypass (CVE-2016-4437 et al) - force upgrade of transitive 1.2.1 -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>1.13.0</version>
+			</dependency>
+			<!-- CVE Security Fix: iTextPDF command injection / XXE (CVE-2021-43113, CVE-2017-9096) -->
+			<dependency>
+				<groupId>com.itextpdf</groupId>
+				<artifactId>itextpdf</artifactId>
+				<version>5.5.13.3</version>
+			</dependency>
+			<!-- CVE Security Fix: xmlbeans XXE/entity expansion (CVE-2021-23926) -->
+			<dependency>
+				<groupId>org.apache.xmlbeans</groupId>
+				<artifactId>xmlbeans</artifactId>
+				<version>5.1.1</version>
 			</dependency>
 		</dependencies>
 
