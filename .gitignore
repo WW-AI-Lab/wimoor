@@ -33,6 +33,11 @@ wimoorui/node_modules/
 wimoorui/dist/
 wimoorui/dist-ssr/
 wimoorui/*.local
+# Frontend (wimoorui) build artifacts and dependencies
+wimoorui/node_modules/
+wimoorui/dist/
+wimoorui/dist-ssr/
+wimoorui/*.local
 
 .DS_Store
 node_modules/
@@ -60,3 +65,7 @@ yarn.lock
 .codex/
 .cursor/
 .github/
+.codex/
+.cursor/
+.github/pms
+pms
