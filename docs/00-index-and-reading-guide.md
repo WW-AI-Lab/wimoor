@@ -19,6 +19,8 @@
 - 如果目标是建立统一状态字典，阅读 [07-state-machines-and-rules.md](07-state-machines-and-rules.md)。
 - 如果目标是回溯关键对象、主表和契约，阅读 [08-data-entities-and-contracts.md](08-data-entities-and-contracts.md)。
 - 如果目标是完整梳理商品基础资料、商品主数据与平台商品映射，阅读 [09-product-master-data-analysis.md](09-product-master-data-analysis.md)。
+- 如果目标是规划外部选品系统、Agent 文案生成、图片视频处理与 Wimoor 的标准对接方式，阅读 [13-agent-product-listing-integration.md](13-agent-product-listing-integration.md)。
+- 如果目标是规划外部系统/Agent 安全认证与 API Key 管理功能，阅读 [14-api-key-security-design.md](14-api-key-security-design.md)。
 
 ## 分析方法
 
