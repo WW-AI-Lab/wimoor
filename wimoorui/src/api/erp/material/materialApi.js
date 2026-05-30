@@ -72,6 +72,27 @@ function saveData(FormData){
 	});
 }
 
+// === 分模块保存 API ===
+function saveBaseInfo(FormData){
+	return request({'method':'POST',
+	                'url':"/erp/api/v1/material/saveBaseInfo",
+				    'data':FormData,
+					'headers':{'Content-Type':"multipart/form-data"},
+	});
+}
+function saveAssembly(data){
+	return request.post('/erp/api/v1/material/saveAssembly', data);
+}
+function saveSupplier(data){
+	return request.post('/erp/api/v1/material/saveSupplier', data);
+}
+function saveSpecs(data){
+	return request.post('/erp/api/v1/material/saveSpecs', data);
+}
+function saveConsumable(data){
+	return request.post('/erp/api/v1/material/saveConsumable', data);
+}
+
 function deleteData(data){
 	return request.get('/erp/api/v1/material/deleteData',{params:data});
 }
@@ -198,5 +219,5 @@ export default{
 	consumableSafetyStockSave,consumableSafetyStockShow,
 	packageList,packageListAll,updateMaterial,batchUpdatePrice,syncProductList,
 	batchUpdateCons,batchClearCons,getCustoms,saveCustoms,getMskuInventory,uploadMoreSupplierFile,getSerialNumber,
-	
+	saveBaseInfo,saveAssembly,saveSupplier,saveSpecs,saveConsumable,
 }

@@ -45,7 +45,12 @@
 							 <el-link :underline="false" href="#inv">库存信息</el-link>
 						</template>
 					</el-tab-pane>
-					<el-tab-pane label="图片视频" name="8">
+					<el-tab-pane label="标题描述" name="9">
+						<template #label>
+							 <el-link :underline="false" href="#listing">标题描述</el-link>
+						</template>
+					</el-tab-pane>
+					<el-tab-pane label="图片视频" name="10">
 						<template #label>
 							 <el-link :underline="false" href="#media">图片视频</el-link>
 						</template>
@@ -56,6 +61,7 @@
 				<el-card class="fr-con">
 					 <el-scrollbar class="he-scr-car" ref="scrollbarRef" @scroll="scroll" always>
 						 <Listinfo ref="infoRef" />
+						 <ListingDetail v-if="mid" :material-id="mid" />
 						 <div id="media" class="mar-top-16">
 							<h3>图片视频</h3>
 							<MediaGallery v-if="mid" :material-id="mid" />
@@ -80,6 +86,7 @@ import { ref,reactive,onMounted,watch,onUnmounted,inject,onUpdated} from 'vue'
 import tabScroll from"@/utils/tab_scroll"
 import Listinfo from"./components/listinfo.vue"
 import MediaGallery from"./components/MediaGallery.vue"
+import ListingDetail from"./components/ListingDetail.vue"
 import {useRouter } from 'vue-router'
 import {redirectToList} from '@/utils/page_helper.js';
 import { ElMessage } from 'element-plus'
